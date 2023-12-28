@@ -8,16 +8,16 @@ mobx.configure({
 });
 
 class Store {
-  @mobx.observable count: number = 0;
+  @mobx.observable count = 0;
 
-  something: number = 2;
+  something = 2;
 
   constructor() {
     mobx.makeObservable(this);
   }
 }
 
-type ComponentProps = {
+interface ComponentProps {
   store: Store;
 };
 
@@ -49,11 +49,6 @@ function MobXApp() {
     </>
   );
 }
-
-// TODO(harrison):
-//  * support react
-//  * computed variables
-//    * cached (updated on change, no other time)
 
 const state = moby.watchable({
   counter: 0,
