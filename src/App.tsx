@@ -19,7 +19,7 @@ class Store {
 
 interface ComponentProps {
   store: Store;
-};
+}
 
 const Component: React.ComponentType<ComponentProps> = observer((props) => {
   const { store } = props;

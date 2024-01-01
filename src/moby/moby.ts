@@ -46,7 +46,7 @@ function stopTrackingModifications() {
 }
 
 class Surface<T> {
-  private tracking: Set<Watchable> = new Set();
+  private tracking = new Set<Watchable>();
 
   private oldX?: T;
 
@@ -89,9 +89,7 @@ class Surface<T> {
 }
 
 class Watchable {
-  toTrigger: Set<() => void> = new Set();
-
-  constructor() {}
+  toTrigger = new Set<() => void>();
 
   subscribe = (cb: () => void) => {
     this.toTrigger.add(cb);
@@ -136,7 +134,7 @@ export function watchable<T extends object>(target: T): T {
 }
 
 export function sideEffect(toRun: () => void) {
-  return () => runAsSideEffect(toRun);
+  return () => { runAsSideEffect(toRun) };
 }
 
 export function runAsSideEffect(toRun: () => void) {
